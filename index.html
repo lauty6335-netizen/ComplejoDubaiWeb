@@ -3,124 +3,1460 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Complejo Dubai | Villa Carlos Paz</title>
 
+    <meta name="description" content="Complejo Dubai en Villa Carlos Paz. Departamentos y monoambientes equipados para disfrutar y descansar.">
+
     <style>
-        body {
+        * {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            color: #222;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        header {
-            background: #111;
-            color: white;
-            padding: 25px;
-            text-align: center;
+        html {
+            scroll-behavior: smooth;
         }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #1f1f1f;
+            background: #ffffff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* =========================
+           VARIABLES
+        ========================= */
+
+        :root {
+            --dark: #151515;
+            --dark-soft: #222222;
+            --gold: #c9a86a;
+            --gold-light: #e0c58d;
+            --cream: #f6f3ed;
+            --gray: #707070;
+            --white: #ffffff;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(21, 21, 21, 0.96);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 25px;
+            height: 75px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            color: white;
+            font-size: 23px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-light);
+        }
+
+        .nav-button {
+            background: var(--gold);
+            color: white !important;
+            padding: 11px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .menu-button {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
 
         .hero {
-            padding: 100px 20px;
+            min-height: 100vh;
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
             text-align: center;
-            background: white;
+            color: white;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.55),
+                    rgba(0, 0, 0, 0.60)
+                ),
+                linear-gradient(
+                    135deg,
+                    #363636,
+                    #151515
+                );
+
+            padding: 120px 20px 80px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero-small {
+            color: var(--gold-light);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 20px;
         }
 
         .hero h1 {
-            font-size: 45px;
-            margin-bottom: 15px;
+            font-size: clamp(45px, 7vw, 82px);
+            line-height: 1.05;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .hero h1 span {
+            color: var(--gold-light);
         }
 
         .hero p {
-            font-size: 20px;
+            max-width: 650px;
+            margin: auto;
+            font-size: 19px;
+            color: #eeeeee;
         }
 
-        .boton {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 15px 30px;
-            background: #111;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
+        .hero-buttons {
+            margin-top: 35px;
+
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
         }
+
+        .button {
+            display: inline-block;
+            padding: 15px 28px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .button-primary {
+            background: var(--gold);
+            color: white;
+        }
+
+        .button-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .button-outline {
+            border: 1px solid white;
+            color: white;
+        }
+
+        .button-outline:hover {
+            background: white;
+            color: var(--dark);
+        }
+
+        /* =========================
+           GENERAL SECTIONS
+        ========================= */
 
         section {
-            max-width: 1000px;
+            padding: 90px 20px;
+        }
+
+        .container {
+            max-width: 1150px;
             margin: auto;
-            padding: 60px 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-label {
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 40px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .section-description {
+            max-width: 650px;
+            margin: auto;
+            color: var(--gray);
+        }
+
+        /* =========================
+           INTRO
+        ========================= */
+
+        .intro {
+            background: white;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .intro-image {
+            min-height: 430px;
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #dad5ca,
+                    #aaa59a
+                );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .intro-text h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .intro-text p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .intro-list {
+            list-style: none;
+            margin-top: 25px;
+        }
+
+        .intro-list li {
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+
+        .intro-list li::before {
+            content: "✓";
+            color: var(--gold);
+            margin-right: 12px;
+        }
+
+        /* =========================
+           ACCOMMODATIONS
+        ========================= */
+
+        .accommodations {
+            background: var(--cream);
         }
 
         .cards {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
         }
 
         .card {
             background: white;
-            padding: 25px;
             border-radius: 12px;
-            flex: 1;
-            min-width: 250px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+            transition: 0.3s;
         }
 
-        footer {
-            background: #111;
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-image {
+            height: 260px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #bbb5a8,
+                    #807a70
+                );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
             color: white;
+            font-size: 14px;
+        }
+
+        .card-content {
+            padding: 28px;
+        }
+
+        .card-content h3 {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .card-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .card-info {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+
+            border-top: 1px solid #eeeeee;
+            padding-top: 18px;
+
+            color: #555;
+            font-size: 14px;
+        }
+
+        .card-info span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* =========================
+           SERVICES
+        ========================= */
+
+        .services {
+            background: white;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .service {
+            padding: 30px 20px;
+            text-align: center;
+            border: 1px solid #eeeeee;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .service:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px);
+        }
+
+        .service-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .service h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .service p {
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        /* =========================
+           GALLERY
+        ========================= */
+
+        .gallery {
+            background: var(--cream);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            grid-auto-rows: 220px;
+            gap: 12px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #d1ccc2,
+                    #8d887f
+                );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+            font-size: 14px;
+        }
+
+        .gallery-item:first-child {
+            grid-row: span 2;
+        }
+
+        /* =========================
+           LOCATION
+        ========================= */
+
+        .location {
+            background: white;
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .location-info h2 {
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .location-info p {
+            color: var(--gray);
+            margin-bottom: 25px;
+        }
+
+        .location-list {
+            list-style: none;
+        }
+
+        .location-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .location-map {
+            min-height: 380px;
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e4e0d7,
+                    #c4bfb5
+                );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
             text-align: center;
             padding: 30px;
+        }
+
+        .location-map-content h3 {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .location-map-content p {
+            color: #666;
+        }
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .cta h2 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #cccccc;
+            margin-bottom: 30px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #0e0e0e;
+            color: white;
+            padding: 50px 20px 25px;
+        }
+
+        .footer-grid {
+            max-width: 1150px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+
+            padding-bottom: 40px;
+            border-bottom: 1px solid #2c2c2c;
+        }
+
+        .footer-brand h2 {
+            font-size: 25px;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand h2 span {
+            color: var(--gold);
+        }
+
+        .footer-brand p {
+            color: #999;
+            max-width: 400px;
+        }
+
+        footer h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 9px;
+        }
+
+        .footer-links a {
+            color: #999;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            max-width: 1150px;
+            margin: 20px auto 0;
+            color: #777;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        /* =========================
+           WHATSAPP FLOAT
+        ========================= */
+
+        .whatsapp {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            z-index: 999;
+
+            width: 58px;
+            height: 58px;
+
+            border-radius: 50%;
+
+            background: #25D366;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 27px;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+
+            transition: 0.3s;
+        }
+
+        .whatsapp:hover {
+            transform: scale(1.08);
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                position: absolute;
+                top: 75px;
+                left: 0;
+                width: 100%;
+
+                background: var(--dark);
+
+                display: none;
+                flex-direction: column;
+
+                padding: 25px;
+                gap: 20px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-button {
+                display: block;
+            }
+
+            .intro-grid,
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            section {
+                padding: 70px 18px;
+            }
+
+            .hero {
+                min-height: 90vh;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .intro-text h2,
+            .location-info h2 {
+                font-size: 32px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-auto-rows: 180px;
+            }
+
+            .gallery-item:first-child {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta h2 {
+                font-size: 35px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<header>
-    <h2>Complejo Dubai</h2>
-    <p>Villa Carlos Paz</p>
-</header>
+    <!-- =========================
+         NAVBAR
+    ========================== -->
 
-<div class="hero">
-    <h1>Descansá en Complejo Dubai</h1>
-    <p>Un lugar pensado para disfrutar y descansar.</p>
+    <nav class="navbar">
 
-    <a class="boton" href="https://wa.me/549XXXXXXXXXX">
-        Consultar disponibilidad
+        <div class="nav-container">
+
+            <a href="#inicio" class="logo">
+                COMPLEJO <span>DUBAI</span>
+            </a>
+
+            <button class="menu-button" onclick="toggleMenu()">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+
+                <li>
+                    <a href="#inicio">Inicio</a>
+                </li>
+
+                <li>
+                    <a href="#alojamientos">Alojamientos</a>
+                </li>
+
+                <li>
+                    <a href="#servicios">Servicios</a>
+                </li>
+
+                <li>
+                    <a href="#ubicacion">Ubicación</a>
+                </li>
+
+                <li>
+                    <a
+                        href="https://wa.me/549XXXXXXXXXX"
+                        target="_blank"
+                        class="nav-button"
+                    >
+                        Reservar
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <header class="hero" id="inicio">
+
+        <div class="hero-content">
+
+            <div class="hero-small">
+                Villa Carlos Paz · Córdoba
+            </div>
+
+            <h1>
+                Descansá en<br>
+                <span>Complejo Dubai</span>
+            </h1>
+
+            <p>
+                Un espacio pensado para disfrutar,
+                desconectar y vivir tu estadía en
+                Villa Carlos Paz.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a
+                    href="https://wa.me/549XXXXXXXXXX"
+                    target="_blank"
+                    class="button button-primary"
+                >
+                    Consultar disponibilidad
+                </a>
+
+                <a
+                    href="#alojamientos"
+                    class="button button-outline"
+                >
+                    Ver alojamientos
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         INTRO
+    ========================== -->
+
+    <section class="intro">
+
+        <div class="container">
+
+            <div class="intro-grid">
+
+                <div class="intro-image">
+                    FOTO DEL COMPLEJO
+                </div>
+
+                <div class="intro-text">
+
+                    <div class="section-label">
+                        Complejo Dubai
+                    </div>
+
+                    <h2>
+                        Tu lugar para descansar
+                    </h2>
+
+                    <p>
+                        Encontrá un espacio cómodo y tranquilo
+                        para disfrutar de Villa Carlos Paz.
+                    </p>
+
+                    <p>
+                        Nuestros alojamientos están equipados
+                        para que tengas todo lo necesario durante
+                        tu estadía.
+                    </p>
+
+                    <ul class="intro-list">
+
+                        <li>
+                            Departamentos equipados
+                        </li>
+
+                        <li>
+                            Piscina
+                        </li>
+
+                        <li>
+                            Espacios verdes
+                        </li>
+
+                        <li>
+                            Ambiente tranquilo
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ALOJAMIENTOS
+    ========================== -->
+
+    <section class="accommodations" id="alojamientos">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-label">
+                    Nuestros alojamientos
+                </div>
+
+                <h2 class="section-title">
+                    Elegí tu espacio
+                </h2>
+
+                <p class="section-description">
+                    Opciones cómodas y equipadas para disfrutar
+                    de tu estadía en Villa Carlos Paz.
+                </p>
+
+            </div>
+
+
+            <div class="cards">
+
+
+                <!-- DEPARTAMENTO -->
+
+                <article class="card">
+
+                    <div class="card-image">
+                        FOTO DEL DEPARTAMENTO
+                    </div>
+
+                    <div class="card-content">
+
+                        <h3>
+                            Departamento
+                        </h3>
+
+                        <p>
+                            Departamento equipado con dormitorio
+                            independiente, cocina completa y baño privado.
+                        </p>
+
+                        <div class="card-info">
+
+                            <span>
+                                👥 Hasta 3 huéspedes
+                            </span>
+
+                            <span>
+                                🛏️ Dormitorio
+                            </span>
+
+                            <span>
+                                🍳 Cocina
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MONOAMBIENTE -->
+
+                <article class="card">
+
+                    <div class="card-image">
+                        FOTO DEL MONOAMBIENTE
+                    </div>
+
+                    <div class="card-content">
+
+                        <h3>
+                            Monoambiente
+                        </h3>
+
+                        <p>
+                            Una opción práctica y cómoda para disfrutar
+                            de unos días de descanso.
+                        </p>
+
+                        <div class="card-info">
+
+                            <span>
+                                👥 Hasta 3 huéspedes
+                            </span>
+
+                            <span>
+                                🛏️ Equipado
+                            </span>
+
+                            <span>
+                                🍳 Cocina
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SERVICIOS
+    ========================== -->
+
+    <section class="services" id="servicios">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-label">
+                    Comodidades
+                </div>
+
+                <h2 class="section-title">
+                    Todo para disfrutar
+                </h2>
+
+                <p class="section-description">
+                    Pensado para que tengas una estadía cómoda
+                    y puedas disfrutar del complejo.
+                </p>
+
+            </div>
+
+
+            <div class="service-grid">
+
+
+                <div class="service">
+
+                    <div class="service-icon">
+                        🏊
+                    </div>
+
+                    <h3>
+                        Piscina
+                    </h3>
+
+                    <p>
+                        Espacio para disfrutar y relajarte.
+                    </p>
+
+                </div>
+
+
+                <div class="service">
+
+                    <div class="service-icon">
+                        🌳
+                    </div>
+
+                    <h3>
+                        Espacios verdes
+                    </h3>
+
+                    <p>
+                        Áreas para descansar y disfrutar.
+                    </p>
+
+                </div>
+
+
+                <div class="service">
+
+                    <div class="service-icon">
+                        🏠
+                    </div>
+
+                    <h3>
+                        Equipado
+                    </h3>
+
+                    <p>
+                        Todo lo necesario para tu estadía.
+                    </p>
+
+                </div>
+
+
+                <div class="service">
+
+                    <div class="service-icon">
+                        📍
+                    </div>
+
+                    <h3>
+                        Buena ubicación
+                    </h3>
+
+                    <p>
+                        Cerca de los principales atractivos.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         GALERÍA
+    ========================== -->
+
+    <section class="gallery">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-label">
+                    Conocé el complejo
+                </div>
+
+                <h2 class="section-title">
+                    Un vistazo a tu próxima estadía
+                </h2>
+
+                <p class="section-description">
+                    Descubrí nuestros espacios.
+                </p>
+
+            </div>
+
+
+            <div class="gallery-grid">
+
+                <div class="gallery-item">
+                    FOTO 1
+                </div>
+
+                <div class="gallery-item">
+                    FOTO 2
+                </div>
+
+                <div class="gallery-item">
+                    FOTO 3
+                </div>
+
+                <div class="gallery-item">
+                    FOTO 4
+                </div>
+
+                <div class="gallery-item">
+                    FOTO 5
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         UBICACIÓN
+    ========================== -->
+
+    <section class="location" id="ubicacion">
+
+        <div class="container">
+
+            <div class="location-grid">
+
+
+                <div class="location-info">
+
+                    <div class="section-label">
+                        Ubicación
+                    </div>
+
+                    <h2>
+                        Villa Carlos Paz
+                    </h2>
+
+                    <p>
+                        Disfrutá de una de las ciudades turísticas
+                        más importantes de Córdoba y utilizá Complejo
+                        Dubai como punto de partida para tus días
+                        de descanso.
+                    </p>
+
+                    <ul class="location-list">
+
+                        <li>
+                            📍 Villa Carlos Paz, Córdoba
+                        </li>
+
+                        <li>
+                            🌊 Cerca de espacios turísticos
+                        </li>
+
+                        <li>
+                            🚗 Fácil acceso
+                        </li>
+
+                    </ul>
+
+                    <br>
+
+                    <a
+                        href="https://www.google.com/maps/search/?api=1&query=Complejo+Dubai+Villa+Carlos+Paz"
+                        target="_blank"
+                        class="button button-primary"
+                    >
+                        Ver en Google Maps
+                    </a>
+
+                </div>
+
+
+                <div class="location-map">
+
+                    <div class="location-map-content">
+
+                        <h3>
+                            📍 Complejo Dubai
+                        </h3>
+
+                        <p>
+                            Villa Carlos Paz<br>
+                            Córdoba, Argentina
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         RESERVA
+    ========================== -->
+
+    <section class="cta">
+
+        <div class="container">
+
+            <div class="cta-content">
+
+                <div class="section-label">
+                    ¿Listo para descansar?
+                </div>
+
+                <h2>
+                    Reservá tu estadía
+                </h2>
+
+                <p>
+                    Consultanos disponibilidad, fechas y opciones
+                    de alojamiento.
+                </p>
+
+                <a
+                    href="https://wa.me/549XXXXXXXXXX"
+                    target="_blank"
+                    class="button button-primary"
+                >
+                    Hablar por WhatsApp
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-grid">
+
+
+            <div class="footer-brand">
+
+                <h2>
+                    COMPLEJO <span>DUBAI</span>
+                </h2>
+
+                <p>
+                    Un espacio pensado para disfrutar,
+                    desconectar y descansar en Villa Carlos Paz.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Navegación
+                </h3>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="#inicio">
+                            Inicio
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#alojamientos">
+                            Alojamientos
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#servicios">
+                            Servicios
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#ubicacion">
+                            Ubicación
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Contacto
+                </h3>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a
+                            href="https://wa.me/549XXXXXXXXXX"
+                            target="_blank"
+                        >
+                            WhatsApp
+                        </a>
+                    </li>
+
+                    <li>
+                        Villa Carlos Paz
+                    </li>
+
+                    <li>
+                        Córdoba, Argentina
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+            © 2026 Complejo Dubai · Todos los derechos reservados
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         WHATSAPP
+    ========================== -->
+
+    <a
+        class="whatsapp"
+        href="https://wa.me/549XXXXXXXXXX"
+        target="_blank"
+        aria-label="Contactar por WhatsApp"
+    >
+        ☎
     </a>
-</div>
 
-<section>
-    <h2>Nuestros departamentos</h2>
 
-    <div class="cards">
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
 
-        <div class="card">
-            <h3>Departamento</h3>
-            <p>Espacio equipado para disfrutar de tu estadía.</p>
-        </div>
+    <script>
 
-        <div class="card">
-            <h3>Monoambiente</h3>
-            <p>Una opción cómoda y práctica para tu viaje.</p>
-        </div>
+        function toggleMenu() {
 
-        <div class="card">
-            <h3>Complejo</h3>
-            <p>Piscina, espacios verdes y un ambiente tranquilo.</p>
-        </div>
+            const nav = document.getElementById("navLinks");
 
-    </div>
-</section>
+            nav.classList.toggle("active");
 
-<section>
-    <h2>¿Dónde estamos?</h2>
-    <p>Villa Carlos Paz, Córdoba, Argentina.</p>
-</section>
+        }
 
-<footer>
-    <p>Complejo Dubai © 2026</p>
-</footer>
+
+        // Cerrar menú al tocar un enlace
+
+        document.querySelectorAll(".nav-links a").forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                document
+                    .getElementById("navLinks")
+                    .classList.remove("active");
+
+            });
+
+        });
+
+    </script>
 
 </body>
 </html>
